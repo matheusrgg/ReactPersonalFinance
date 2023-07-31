@@ -16,6 +16,10 @@ const Expenses = (props) => {
     //criar uma nova array talvez?
   }
 
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear
+  })
+
   return (
     <div>
 
@@ -26,6 +30,8 @@ const Expenses = (props) => {
         />
 
 
+        {/* ----------- 2 tentativa */}
+
         {/* {props.items.filter(expenses => expenses.date.getFullYear() == filteredYear).map(expense =>(
         <ExpenseItem
           key={expense.id}
@@ -35,8 +41,24 @@ const Expenses = (props) => {
           />
       ))} */}
 
-        {console.log("o que vem aqui?", props.items[0].date.getFullYear())}
+
+              {/* ----------- 1 tentativa */}
+
+        {/* {console.log("o que vem aqui?", props.items[0].date.getFullYear())}
         {props.items.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))} */}
+
+
+        {/* ----------- 3 tentativa */}
+
+
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
