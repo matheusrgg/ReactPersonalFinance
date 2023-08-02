@@ -3,17 +3,15 @@ import FilterExpense from '../FilterExpense/FilterExpense';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import './Expenses.css';
+import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState('2020');
 
   const saveFilterDataHandler = (enteredFilterData) => {
     setFilteredYear(enteredFilterData)
-    //estou escutando  a seleção do ano
-    console.log("informação do filtro 1", filteredYear)
-    console.log("informação do filtro 2", enteredFilterData)
-    //fazer um filtro da array com esses
-    //criar uma nova array talvez?
+    // console.log("tentando entender setFilteredYear", setFilteredYear);
+    // console.log("tentando entender filteredYear", filteredYear);
   }
 
   const filteredExpenses = props.items.filter(expense => {
@@ -22,52 +20,12 @@ const Expenses = (props) => {
 
   return (
     <div>
-
       <Card className="expenses">
         <FilterExpense
           select={filteredYear}
           onSaveFilterData={saveFilterDataHandler}
         />
-
-
-        {/* ----------- 2 tentativa */}
-
-        {/* {props.items.filter(expenses => expenses.date.getFullYear() == filteredYear).map(expense =>(
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-          />
-      ))} */}
-
-
-              {/* ----------- 1 tentativa */}
-
-        {/* {console.log("o que vem aqui?", props.items[0].date.getFullYear())}
-        {props.items.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))} */}
-
-
-        {/* ----------- 3 tentativa */}
-
-
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
-
-
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
 
