@@ -13,6 +13,7 @@ const NewExpense = (props) => {
       id:Math.random().toString()
     }
     props.onAddExpense(expenseData)
+    handleCancelClick()
   }
 
   const hadleButtonClick=()=>{
@@ -35,7 +36,7 @@ const NewExpense = (props) => {
       <div className='new-expense'>
         <ExpenseForm 
            onSaveExpenseData={saveExpenseDataHandler} 
-        onCancelClick={handleCancelClick}
+           onCancelClick={handleCancelClick}
 
            />
       </div>

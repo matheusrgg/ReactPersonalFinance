@@ -3,9 +3,7 @@ import "./ExpensesList.css"
 
 function ExpensesList(props){
 
-  let expenseContentMessage = <p>No expenses found</p>
-
-  if(props.items.length >0){
+  if(props.items.length === 0){
     return (<h2 className="expenses-list__fallback">Found no Expenses</h2>)
   
   }
@@ -20,14 +18,9 @@ function ExpensesList(props){
         date={expense.date}
       />
     ))
-  
 }
-
   </ul>
-
   )
-
-
 }
 
 export default ExpensesList
